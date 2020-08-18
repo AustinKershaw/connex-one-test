@@ -1,0 +1,9 @@
+{
+    "port"  : 8080,
+    "paths" : {
+        "public" : {
+            "dev"  : "src/dev",
+            "dist"  : "src/dist"
+        }
+    }
+}
