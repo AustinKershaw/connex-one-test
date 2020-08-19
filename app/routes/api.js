@@ -3,7 +3,6 @@ const router = express.Router();
 const getDate = require( '../util/getDate' );
 
 function authorize( req, res, next ){
-    console.log("req.get( 'Authorization' ) : ", req.get( 'Authorization' ))
     if( req.get( 'Authorization' ) === 'mysecrettoken' ){ return next() };
     res.status( 403 ).send({ data : "'Authorization' value required", success : false, status : 403 });
 };

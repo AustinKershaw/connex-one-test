@@ -3,8 +3,7 @@ const express = require( 'express' );
 const bodyParser = require( 'body-parser' );
 const promMid = require( 'express-prometheus-middleware' );
 
-const config = require( './app/config.json' );
-const port = process.env.PORT || config.port || 8080;
+const port = process.env.PORT || 8080;
 const app = express();
 
 
@@ -22,6 +21,6 @@ app.use( '/public', express.static( 'public/' ) );
     // ADD ROUTES
 app.use( '/api', require('./app/routes/api') );
     // CATCH ALL UNKNOWN ROUTES AND REDIRECT HOME
-// app.get( '*', ( req, res ) => { res.redirect('/') });
+app.get( '*', ( req, res ) => { res.redirect('/') });
     // INIT
 app.listen( port, () => { console.log(`Active on port :: ${ port }`) });

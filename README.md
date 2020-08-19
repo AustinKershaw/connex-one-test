@@ -2,6 +2,6 @@
 
 ### Instructions
 
-• npm install
-• npm run build
-• npm run server
+* npm install
+* npm run build
+* npm run server

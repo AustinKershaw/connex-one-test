@@ -1,3 +1,4 @@
+
 const leadingZero = num => num < 10 ? `0${ num }` : num;
 
 module.exports = function getDate( type ){
