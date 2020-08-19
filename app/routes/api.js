@@ -1,18 +1,26 @@
 const express = require( 'express' );
 const router = express.Router();
+const getDate = require( '../util/getDate' );
 
 function authorize( req, res, next ){
+    console.log("req.get( 'Authorization' ) : ", req.get( 'Authorization' ))
     if( req.get( 'Authorization' ) === 'mysecrettoken' ){ return next() };
     res.status( 403 ).send({ data : "'Authorization' value required", success : false, status : 403 });
 };
 
     // ROUTES
 router.get( '/time', authorize, ( req, res ) => {
-    res.send({ route : "/time", success : true });
-});
-
-router.get( '/metrics', authorize, ( req, res ) => {
-    res.send({ route : "/metrics", success : true });
+    res.send({
+        properties : {
+            epoch : {
+                description : "The current server time, in epoch seconds, at time of processing the request.",
+                type : "number"
+            }
+        },
+        required : [ "epoch" ],
+        type : "object",
+        value : getDate( "epoch" )
+    });
 });
 
     // RETURN ROUTER
